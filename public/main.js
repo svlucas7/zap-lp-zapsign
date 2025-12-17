@@ -1,6 +1,25 @@
 // Enhanced Main JavaScript with Advanced Features
 // Mark document as JS-enabled to allow gated animations/styles
 document.documentElement.classList.add('js-enabled');
+
+// Mapeamento de códigos de produtos para uso global (WhatsApp message)
+const PRODUCT_CODES = {
+  'copo-termico-473': ['41140021', '41140022', '41140023', '41140024'],
+  'squeeze-ragnar': ['41140025', '41140026', '41140027', '41140028', '41140029'],
+  'squeeze-erald': ['41140030', '41140035', '41140032', '41140033'],
+  'copo-quenchpro': ['41140037', '41140038', '41140039'],
+  'copo-cuia': ['41140040', '41140041', '41140042'],
+  'caneta-clare': ['40240004', '40240005'],
+  'caneta-beta-soft': ['40240002', '40240001'],
+  'caneta-lyme': ['40240006', '40240007'],
+  'caneta-olaf': ['40240009', '40240008'],
+  'caneta-caribe': ['40220015'],
+  'caneta-elegance': ['40220016', '40220017'],
+  'caneta-executiva': ['40220006', '40220005'],
+  'caneta-comercial': ['40220001', '40220002', '40220003', '40220004', '40220006', '40220007', '40220008'],
+  'caneta-touch': ['40220003', '40220004']
+};
+
 // Mobile menu toggle
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -359,8 +378,16 @@ function buildWhatsAppMessage() {
       if (!checkbox || !checkbox.checked) return null;
       const qty = row.querySelector('input[type="number"]')?.value?.trim();
       const name = checkbox.value || checkbox.textContent || '';
+      const productId = row.dataset.productId;
       if (!name) return null;
-      return qty ? `${name} — ${qty} un` : name;
+      
+      // Incluir códigos do produto na mensagem
+      let codesStr = '';
+      if (productId && PRODUCT_CODES[productId]) {
+        codesStr = ` (Cód: ${PRODUCT_CODES[productId].join('/')})`;
+      }
+      
+      return qty ? `• ${name}${codesStr} — ${qty} un` : `• ${name}${codesStr}`;
     })
     .filter(Boolean);
 
@@ -370,7 +397,7 @@ function buildWhatsAppMessage() {
     empresa ? `Empresa: ${empresa}` : '',
     email ? `E-mail: ${email}` : '',
     telefone ? `Telefone: ${telefone}` : '',
-    produtos.length ? `Produtos: ${produtos.join(', ')}` : '',
+    produtos.length ? `Produtos:\n${produtos.join('\n')}` : '',
     quantidade ? `Quantidade estimada: ${quantidade}` : '',
     mensagem ? `Observações: ${mensagem}` : ''
   ].filter(Boolean);
@@ -531,7 +558,14 @@ function initProductDetails() {
       angles: 5,
       description: 'Copo térmico de 473ml em aço inox de alta qualidade com abridor integrado na tampa. Mantém bebidas geladas por até 12 horas e quentes por até 6 horas. Ideal para uso diário, escritório ou atividades ao ar livre. Acabamento premium com pintura eletrostática resistente a riscos.',
       material: 'Aço inox 304',
-      packaging: 'Caixa individual com proteção interna'
+      packaging: 'Caixa individual com proteção interna',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preto', code: '41140021' },
+        { label: 'Azul', code: '41140022' },
+        { label: 'Branco', code: '41140023' },
+        { label: 'Rosa', code: '41140024' }
+      ]
     },
     'squeeze-ragnar': {
       folder: 'squeeze%20ragnar',
@@ -539,7 +573,15 @@ function initProductDetails() {
       angles: 4,
       description: 'Squeeze Ragnar de 500ml com design moderno e estrutura reforçada em aço inox. Tampa rosqueável com vedação de silicone. Ideal para academia, trilhas e uso corporativo. Superfície lisa perfeita para gravação a laser.',
       material: 'Aço inox 304',
-      packaging: 'Caixa individual'
+      packaging: 'Caixa individual',
+      minQuantity: 40,
+      colorCodes: [
+        { label: 'Preto', code: '41140025' },
+        { label: 'Azul', code: '41140026' },
+        { label: 'Branco', code: '41140027' },
+        { label: 'Vermelho', code: '41140028' },
+        { label: 'Cromo Satinado', code: '41140029' }
+      ]
     },
     'squeeze-erald': {
       folder: 'squeeze%20erald',
@@ -547,7 +589,14 @@ function initProductDetails() {
       angles: 3,
       description: 'Squeeze Erald de 500ml em alumínio leve e resistente. Design compacto e ergonômico, fácil de transportar. Tampa com trava de segurança. Excelente custo-benefício para grandes volumes.',
       material: 'Alumínio',
-      packaging: 'Embalagem plástica individual'
+      packaging: 'Embalagem plástica individual',
+      minQuantity: 60,
+      colorCodes: [
+        { label: 'Preto', code: '41140030' },
+        { label: 'Azul', code: '41140035' },
+        { label: 'Branco', code: '41140032' },
+        { label: 'Rosa', code: '41140033' }
+      ]
     },
     'copo-quenchpro': {
       folder: 'copo%20quencher',
@@ -555,7 +604,13 @@ function initProductDetails() {
       angles: 3,
       description: 'Copo QuenchPro de 1200ml com grande capacidade e alça integrada para transporte. Dupla parede em aço inox com isolamento térmico. Tampa com canudo reutilizável. Perfeito para longas jornadas de trabalho.',
       material: 'Aço inox 304 dupla parede',
-      packaging: 'Caixa individual premium'
+      packaging: 'Caixa individual premium',
+      minQuantity: 25,
+      colorCodes: [
+        { label: 'Preto', code: '41140037' },
+        { label: 'Azul', code: '41140038' },
+        { label: 'Branco', code: '41140039' }
+      ]
     },
     'copo-cuia': {
       folder: 'copo%20cuia',
@@ -563,7 +618,13 @@ function initProductDetails() {
       angles: 4,
       description: 'Copo térmico Cuia de 360ml, compacto e versátil. Design inspirado na tradicional cuia, perfeito para chimarrão ou bebidas em geral. Estrutura em aço inox com isolamento térmico eficiente.',
       material: 'Aço inox 304',
-      packaging: 'Caixa individual'
+      packaging: 'Caixa individual',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preto', code: '41140040' },
+        { label: 'Azul', code: '41140041' },
+        { label: 'Branco', code: '41140042' }
+      ]
     },
     'caneta-clare': {
       folder: 'caneta%20metal%20claire',
@@ -571,7 +632,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta metálica Clare em alumínio com acabamento clean e sofisticado. Clip metálico resistente e mecanismo de acionamento suave. Carga esferográfica azul de alta durabilidade. Presença moderna para uso profissional.',
       material: 'Alumínio',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40240004' },
+        { label: 'Branca', code: '40240005' }
+      ]
     },
     'caneta-beta-soft': {
       folder: 'caneta%20executiva',
@@ -579,7 +645,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta metálica Beta Soft com acabamento soft touch que proporciona conforto na escrita. Corpo em alumínio com revestimento emborrachado. Design executivo elegante para ambientes corporativos.',
       material: 'Alumínio com revestimento soft touch',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40240002' },
+        { label: 'Branca', code: '40240001' }
+      ]
     },
     'caneta-lyme': {
       folder: 'caneta%20elegance',
@@ -587,7 +658,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta metálica Lyme com visual limpo e executivo. Acabamento metalizado de alta qualidade com detalhes cromados. Ideal para brindes corporativos de alto padrão.',
       material: 'Alumínio',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Branca', code: '40240006' },
+        { label: 'Silver', code: '40240007' }
+      ]
     },
     'caneta-olaf': {
       folder: 'caneta%20executiva',
@@ -595,7 +671,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta metálica Olaf com design minimalista e elegante. Corpo cilíndrico em alumínio com acabamento fosco premium. Perfeita para eventos corporativos e ambientes executivos.',
       material: 'Alumínio',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40240009' },
+        { label: 'Branca', code: '40240008' }
+      ]
     },
     'caneta-caribe': {
       folder: 'caneta%20caribe',
@@ -603,7 +684,11 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta plástica Caribe com corpo leve e design funcional. Ideal para grandes volumes promocionais. Clip integrado e acionamento por clique. Excelente relação custo-benefício.',
       material: 'Plástico ABS',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40220015' }
+      ]
     },
     'caneta-elegance': {
       folder: 'caneta%20elegance',
@@ -611,7 +696,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta plástica Elegance com visual sofisticado e detalhes metalizados. Corpo ergonômico para escrita confortável. Ideal para uso institucional e eventos.',
       material: 'Plástico ABS com detalhes metalizados',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40220016' },
+        { label: 'Prata', code: '40220017' }
+      ]
     },
     'caneta-executiva': {
       folder: 'caneta%20executiva',
@@ -619,7 +709,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta plástica Executiva com acabamento premium e presença visual superior. Design clássico com detalhes cromados. Escrita suave e durável.',
       material: 'Plástico ABS premium',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Prata', code: '40220006' },
+        { label: 'Branca', code: '40220005' }
+      ]
     },
     'caneta-comercial': {
       folder: 'caneta%20comercial',
@@ -627,7 +722,17 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta plástica Comercial versátil e disponível em grande variedade de cores. Corpo leve e econômico, ideal para distribuição em massa. Tinta de alta qualidade com escrita suave.',
       material: 'Plástico',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Preta', code: '40220001' },
+        { label: 'Azul', code: '40220002' },
+        { label: 'Vermelha', code: '40220003' },
+        { label: 'Amarela', code: '40220004' },
+        { label: 'Verde', code: '40220006' },
+        { label: 'Cinza', code: '40220007' },
+        { label: 'Branca', code: '40220008' }
+      ]
     },
     'caneta-touch': {
       folder: 'caneta%20comercial',
@@ -635,7 +740,12 @@ function initProductDetails() {
       angles: 3,
       description: 'Caneta plástica Touch com ponteira touch screen e apoio para celular integrado. Multifuncional e moderna, perfeita para o público conectado. Ideal para brindes tech.',
       material: 'Plástico ABS',
-      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta'
+      packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
+      minQuantity: 50,
+      colorCodes: [
+        { label: 'Branca', code: '40220003' },
+        { label: 'Preta', code: '40220004' }
+      ]
     }
   };
 
@@ -722,6 +832,11 @@ function initProductDetails() {
       </button>
     `).join('');
 
+    // Gerar HTML dos códigos dos produtos
+    const colorCodesHtml = (gallery.colorCodes || [])
+      .map(c => `<div class="flex justify-between text-xs"><span class="text-zapGray/60">${c.label}</span><span class="font-mono font-semibold text-zapGray">${c.code}</span></div>`)
+      .join('');
+
     content.innerHTML = `
       <div class="grid md:grid-cols-2 gap-0">
         <div class="bg-lightGray p-6 md:p-8">
@@ -744,6 +859,15 @@ function initProductDetails() {
               ${colorButtons}
             </div>
           </div>
+
+          <div class="mb-4 bg-gray-50 rounded-lg p-3">
+            <p class="text-xs font-semibold text-zapGray mb-2">Códigos do produto:</p>
+            <div class="space-y-1">
+              ${colorCodesHtml || '<p class="text-xs text-zapGray/50">Códigos disponíveis sob consulta.</p>'}
+            </div>
+          </div>
+
+          <p class="text-sm font-semibold text-zapGreen mb-4">Quantidade mínima: ${gallery.minQuantity || 50} unidades</p>
           
           <div class="space-y-3 mb-6 flex-1">
             <div class="flex items-start gap-2">
@@ -892,6 +1016,9 @@ function initCompare() {
       btn.classList.toggle('bg-zapGreen', isSelected);
       btn.classList.toggle('text-white', isSelected);
       btn.classList.toggle('ring-zapGreen', isSelected);
+      btn.classList.toggle('text-zapGray', !isSelected);
+      btn.classList.toggle('ring-gray-200', !isSelected);
+      btn.classList.toggle('btn-compare-selected', isSelected);
     });
   }
 

@@ -96,6 +96,12 @@
     .btn-secondary { background: transparent; color: #F66B10; font-weight: 700; font-size: 1.05rem; padding: 0.9rem 1.5rem; border-radius: 9999px; border: 1.5px solid #F66B10; cursor: pointer; transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
     .btn-secondary:hover { color: #fff; background: linear-gradient(135deg, #F66B10, #C5560D); border-color: #F66B10; }
 
+    .btn-compare { background: linear-gradient(180deg, rgba(246,107,16,0.12), rgba(246,107,16,0)); border: 1px solid rgba(246,107,16,0.3); color: #1C1C1C; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.6rem 1.1rem; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.4rem; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+    .btn-compare:hover { transform: translateY(-1px); box-shadow: 0 10px 20px -14px rgba(246,107,16,0.8); }
+    .btn-compare:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(246,107,16,0.35); }
+    .btn-compare .compare-label { letter-spacing: 0.08em; }
+    .btn-compare-selected { background: linear-gradient(135deg, #F66B10, #C5560D); color: #fff !important; box-shadow: 0 12px 30px -12px rgba(12,12,14,0.6); border-color: transparent !important; }
+
     .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.7rem; border-radius: 9999px; background: #F2F2F2; color: #1C1C1C; font-weight: 600; font-size: 0.85rem; }
     .badge-ghost { background: linear-gradient(135deg, rgba(246,107,16,0.12), rgba(197,86,13,0.12)); color: #F66B10; }
 
@@ -355,7 +361,7 @@
                 </div>
                 <div class="flex flex-wrap items-center gap-2 pt-3 text-sm text-zapGray/70">
                   <svg class="w-4 h-4 text-zapGray/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l5-5 5 5"/><path d="M17 12a5 5 0 10-10 0"/></svg>
-                  <p class="text-sm">Atendimento direto pelo WhatsApp com proposta em minutos.</p>
+                  <p class="text-sm">Atendimento direto pelo WhatsApp com orçamento em minutos.</p>
                 </div>
                 
                 <!-- Stats de confiança -->
@@ -365,11 +371,11 @@
                     <div class="text-xs text-zapGray/60 uppercase tracking-wide mt-1">Pedidos enviados</div>
                   </div>
                   <div class="text-left">
-                    <div class="text-2xl lg:text-3xl font-extrabold text-gradient-orange">48h</div>
-                    <div class="text-xs text-zapGray/60 uppercase tracking-wide mt-1">Envio rápido</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-gradient-orange">24h</div>
+                    <div class="text-xs text-zapGray/60 uppercase tracking-wide mt-1">Orçamento rápido</div>
                   </div>
                   <div class="text-left">
-                    <div class="text-2xl lg:text-3xl font-extrabold text-gradient-orange">14</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-gradient-orange">41</div>
                     <div class="text-xs text-zapGray/60 uppercase tracking-wide mt-1">Produtos</div>
                   </div>
                 </div>
@@ -413,7 +419,7 @@
           <div class="flex justify-center">
             <img src="public/assets/images/zapport_1.png" alt="Logo ZapPort" class="h-16 object-contain" />
           </div>
-          <h2 class="text-3xl lg:text-4xl font-semibold text-zapGray mt-2">Distribuímos <span class="text-gradient-orange font-semibold">brindes funcionais</span> para marcas que <span class="text-gradient-orange font-semibold">precisam de escala</span></h2>
+          <h2 class="text-3xl lg:text-4xl font-semibold text-zapGray mt-2">Entregamos <span class="text-gradient-orange font-semibold">brindes funcionais</span> para marcas que <span class="text-gradient-orange font-semibold">precisam de escala</span></h2>
           <p class="text-base lg:text-lg text-zapGray/75">
             Apresentamos o <span class="text-gradient-orange font-semibold">novo portal de vendas no atacado da ZAP</span>, criado exclusivamente para atender parceiros selecionados do segmento de brindes. Atuamos como <span class="text-gradient-orange font-semibold">revendedor oficial e exclusivo em Minas Gerais</span>, trazendo diretamente da China uma <span class="text-gradient-orange font-semibold">linha completa de produtos</span> com <span class="text-gradient-orange font-semibold">preço competitivo</span>, <span class="text-gradient-orange font-semibold">alta qualidade</span>, <span class="text-gradient-orange font-semibold">estoque robusto</span> e entrega rápida.
           </p>
@@ -448,8 +454,8 @@
               <span class="text-xs font-semibold text-zapGray uppercase tracking-[0.3em]">Rapidez</span>
             </div>
             <div>
-              <div class="text-5xl font-extrabold text-gradient-orange">48h</div>
-              <p class="text-sm font-semibold text-zapGray/80">Metade dos pedidos sai em 2 dias úteis</p>
+              <div class="text-5xl font-extrabold text-gradient-orange">24h</div>
+              <p class="text-sm font-semibold text-zapGray/80">Orçamento rápido em até 24h úteis</p>
             </div>
             <p class="text-xs text-zapGray/60">Do pedido à expedição: processos ágeis mantêm os estoques do seu cliente sempre cheios.</p>
           </div>
@@ -601,7 +607,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="copo-termico-473">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-termico-473" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-termico-473" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -618,7 +626,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="squeeze-ragnar">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="squeeze-ragnar" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="squeeze-ragnar" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -635,7 +645,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="squeeze-erald">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="squeeze-erald" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="squeeze-erald" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -652,7 +664,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="copo-quenchpro">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-quenchpro" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-quenchpro" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -669,7 +683,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="copo-cuia">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-cuia" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="copo-cuia" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -686,7 +702,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-clare">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-clare" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-clare" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -703,7 +721,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-beta-soft">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-beta-soft" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-beta-soft" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -720,7 +740,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-lyme">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-lyme" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-lyme" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -737,7 +759,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-olaf">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-olaf" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-olaf" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -754,7 +778,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-caribe">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-caribe" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-caribe" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -771,7 +797,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-elegance">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-elegance" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-elegance" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -788,7 +816,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-executiva">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-executiva" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-executiva" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -805,7 +835,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-comercial">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-comercial" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-comercial" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -822,7 +854,9 @@
               <a href="#contato" class="btn-primary w-full text-sm py-2.5">Solicitar Orçamento</a>
               <div class="flex gap-2">
                 <button type="button" class="btn-detail btn-secondary flex-1 text-xs py-2" data-detail="caneta-touch">Ver detalhes</button>
-                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-touch" title="Comparar">⚖️</button>
+                <button type="button" class="btn-compare px-3 py-2 rounded-full ring-1 ring-gray-200 text-xs text-zapGray hover:bg-zapGreen hover:text-white hover:ring-zapGreen transition-all" data-compare="caneta-touch" title="Comparar">
+                  <span class="compare-label">Comparar</span>
+                </button>
               </div>
             </div>
           </article>
@@ -870,75 +904,75 @@
             </div>
             <p class="text-xs text-zapGray/60">Marque os itens desejados e informe a quantidade</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="copo-termico-473" data-min="50">
                 <input type="checkbox" name="produto[]" value="Copo térmico com abridor – 473 ml" class="checkbox-styled" />
                 <span class="flex-1">Copo térmico 473ml</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="copo-termico-473" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="squeeze-ragnar" data-min="40">
                 <input type="checkbox" name="produto[]" value="Squeeze Ragnar – 500 ml" class="checkbox-styled" />
                 <span class="flex-1">Squeeze Ragnar 500ml</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="40" step="1" data-product-id="squeeze-ragnar" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="squeeze-erald" data-min="60">
                 <input type="checkbox" name="produto[]" value="Squeeze Erald – 500 ml" class="checkbox-styled" />
                 <span class="flex-1">Squeeze Erald 500ml</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="60" step="1" data-product-id="squeeze-erald" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="copo-quenchpro" data-min="25">
                 <input type="checkbox" name="produto[]" value="Copo QuenchPro – 1200 ml" class="checkbox-styled" />
                 <span class="flex-1">Copo QuenchPro 1200ml</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="25" step="1" data-product-id="copo-quenchpro" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="copo-cuia" data-min="50">
                 <input type="checkbox" name="produto[]" value="Copo térmico Cuia – 360 ml" class="checkbox-styled" />
                 <span class="flex-1">Copo Cuia 360ml</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="copo-cuia" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-clare" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta metal Clare" class="checkbox-styled" />
                 <span class="flex-1">Caneta Metal Clare</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-clare" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-beta-soft" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta metal Beta Soft" class="checkbox-styled" />
                 <span class="flex-1">Caneta Metal Beta Soft</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-beta-soft" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-lyme" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta metal Lyme" class="checkbox-styled" />
                 <span class="flex-1">Caneta Metal Lyme</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-lyme" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-olaf" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta metal Olaf" class="checkbox-styled" />
                 <span class="flex-1">Caneta Metal Olaf</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-olaf" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-caribe" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta plástica Caribe" class="checkbox-styled" />
                 <span class="flex-1">Caneta Plástica Caribe</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-caribe" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-elegance" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta plástica Elegance" class="checkbox-styled" />
                 <span class="flex-1">Caneta Plástica Elegance</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-elegance" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-executiva" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta plástica Executiva" class="checkbox-styled" />
                 <span class="flex-1">Caneta Plástica Executiva</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-executiva" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-comercial" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta plástica Comercial" class="checkbox-styled" />
                 <span class="flex-1">Caneta Plástica Comercial</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-comercial" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
-              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row>
+              <label class="flex items-center gap-2.5 text-sm text-zapGray rounded-lg border border-gray-200 bg-white px-3 py-2.5 hover:border-zapGreen/40 transition-all cursor-pointer" data-product-row data-product-id="caneta-touch" data-min="50">
                 <input type="checkbox" name="produto[]" value="Caneta plástica Touch e suporte" class="checkbox-styled" />
                 <span class="flex-1">Caneta Touch c/ Suporte</span>
-                <input type="number" min="1" step="1" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
+                <input type="number" min="50" step="1" data-product-id="caneta-touch" placeholder="Qtd" class="w-16 rounded border border-gray-200 px-2 py-1 text-xs text-center text-zapGray focus:outline-none focus:ring-1 focus:ring-zapGreen/50" />
               </label>
             </div>
           </div>
