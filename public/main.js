@@ -903,14 +903,18 @@ function initProductDetails() {
 
     // Add event listeners for gallery
     document.querySelectorAll('.gallery-thumb').forEach(thumb => {
-      thumb.addEventListener('click', () => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         updateMainImage(parseInt(thumb.dataset.index));
       });
     });
 
     // Add event listeners for color buttons
     document.querySelectorAll('.color-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const color = btn.dataset.color;
         const prodId = btn.dataset.product;
         
@@ -937,7 +941,9 @@ function initProductDetails() {
           
           // Re-attach thumb listeners
           document.querySelectorAll('.gallery-thumb').forEach(thumb => {
-            thumb.addEventListener('click', () => {
+            thumb.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
               updateMainImage(parseInt(thumb.dataset.index));
             });
           });
