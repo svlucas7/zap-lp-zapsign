@@ -832,10 +832,21 @@ function initProductDetails() {
       </button>
     `).join('');
 
-    // Gerar HTML dos códigos dos produtos
-    const colorCodesHtml = (gallery.colorCodes || [])
-      .map(c => `<div class="flex justify-between text-xs"><span class="text-zapGray/60">${c.label}</span><span class="font-mono font-semibold text-zapGray">${c.code}</span></div>`)
+    // Gerar HTML dos códigos dos produtos (usar fallback para PRODUCT_CODES se necessário)
+    let codes = Array.isArray(gallery.colorCodes) ? gallery.colorCodes.slice() : [];
+    if ((!codes || !codes.length) && PRODUCT_CODES[productId]) {
+      // Construir pares label/code usando cores conhecidas e o mapa global
+      const pc = PRODUCT_CODES[productId] || [];
+      codes = (gallery.colors || []).map((col, i) => ({ label: col.charAt(0).toUpperCase() + col.slice(1), code: pc[i] || '' }));
+    }
+
+    const colorCodesHtml = (codes || [])
+      .filter(c => c && (c.code || c.label))
+      .map(c => `<div class="flex justify-between text-xs"><span class="text-zapGray/60">${c.label}</span><span class="font-mono font-semibold text-zapGray">${c.code || '—'}</span></div>`)
       .join('');
+
+    // Debug: se não houver códigos, logar para facilitar diagnóstico
+    if (!colorCodesHtml) console.debug('openModal: sem códigos para', productId, gallery, PRODUCT_CODES[productId]);
 
     content.innerHTML = `
       <div class="grid md:grid-cols-2 gap-0">
