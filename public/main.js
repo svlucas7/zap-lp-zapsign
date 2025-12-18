@@ -553,7 +553,7 @@ function initProductDetails() {
   // Product image folders mapping
   const productGalleries = {
     'copo-termico-473': {
-      folder: 'copo%20t%C3%A9rmico',
+      folder: 'copo térmico',
       colors: ['preto', 'azul', 'branco', 'rosa'],
       angles: 5,
       description: 'Copo térmico de 473ml em aço inox de alta qualidade com abridor integrado na tampa. Mantém bebidas geladas por até 12 horas e quentes por até 6 horas. Ideal para uso diário, escritório ou atividades ao ar livre. Acabamento premium com pintura eletrostática resistente a riscos.',
@@ -568,7 +568,7 @@ function initProductDetails() {
       ]
     },
     'squeeze-ragnar': {
-      folder: 'squeeze%20ragnar',
+      folder: 'squeeze ragnar',
       colors: ['preto', 'azul', 'branco', 'vermelho', 'cromo'],
       angles: 4,
       description: 'Squeeze Ragnar de 500ml com design moderno e estrutura reforçada em aço inox. Tampa rosqueável com vedação de silicone. Ideal para academia, trilhas e uso corporativo. Superfície lisa perfeita para gravação a laser.',
@@ -584,7 +584,7 @@ function initProductDetails() {
       ]
     },
     'squeeze-erald': {
-      folder: 'squeeze%20erald',
+      folder: 'squeeze erald',
       colors: ['preto', 'azul', 'branco', 'rosa'],
       angles: 3,
       description: 'Squeeze Erald de 500ml em alumínio leve e resistente. Design compacto e ergonômico, fácil de transportar. Tampa com trava de segurança. Excelente custo-benefício para grandes volumes.',
@@ -599,7 +599,7 @@ function initProductDetails() {
       ]
     },
     'copo-quenchpro': {
-      folder: 'copo%20quencher',
+      folder: 'copo quencher',
       colors: ['preto', 'azul', 'branco'],
       angles: 3,
       description: 'Copo QuenchPro de 1200ml com grande capacidade e alça integrada para transporte. Dupla parede em aço inox com isolamento térmico. Tampa com canudo reutilizável. Perfeito para longas jornadas de trabalho.',
@@ -613,7 +613,7 @@ function initProductDetails() {
       ]
     },
     'copo-cuia': {
-      folder: 'copo%20cuia',
+      folder: 'copo cuia',
       colors: ['preto', 'azul', 'branco'],
       angles: 4,
       description: 'Copo térmico Cuia de 360ml, compacto e versátil. Design inspirado na tradicional cuia, perfeito para chimarrão ou bebidas em geral. Estrutura em aço inox com isolamento térmico eficiente.',
@@ -627,7 +627,7 @@ function initProductDetails() {
       ]
     },
     'caneta-clare': {
-      folder: 'caneta%20metal%20claire',
+      folder: 'caneta metal claire',
       colors: ['preta', 'branca'],
       angles: 3,
       description: 'Caneta metálica Clare em alumínio com acabamento clean e sofisticado. Clip metálico resistente e mecanismo de acionamento suave. Carga esferográfica azul de alta durabilidade. Presença moderna para uso profissional.',
@@ -640,7 +640,7 @@ function initProductDetails() {
       ]
     },
     'caneta-beta-soft': {
-      folder: 'caneta%20executiva',
+      folder: 'caneta metal beta soft',
       colors: ['preta', 'branca'],
       angles: 3,
       description: 'Caneta metálica Beta Soft com acabamento soft touch que proporciona conforto na escrita. Corpo em alumínio com revestimento emborrachado. Design executivo elegante para ambientes corporativos.',
@@ -653,7 +653,7 @@ function initProductDetails() {
       ]
     },
     'caneta-lyme': {
-      folder: 'caneta%20elegance',
+      folder: 'caneta metal lyme',
       colors: ['preta', 'prata'],
       angles: 3,
       description: 'Caneta metálica Lyme com visual limpo e executivo. Acabamento metalizado de alta qualidade com detalhes cromados. Ideal para brindes corporativos de alto padrão.',
@@ -666,7 +666,7 @@ function initProductDetails() {
       ]
     },
     'caneta-olaf': {
-      folder: 'caneta%20executiva',
+      folder: 'caneta metal olaf',
       colors: ['branca', 'preta'],
       angles: 3,
       description: 'Caneta metálica Olaf com design minimalista e elegante. Corpo cilíndrico em alumínio com acabamento fosco premium. Perfeita para eventos corporativos e ambientes executivos.',
@@ -679,7 +679,7 @@ function initProductDetails() {
       ]
     },
     'caneta-caribe': {
-      folder: 'caneta%20caribe',
+      folder: 'caneta caribe',
       colors: ['preta'],
       angles: 3,
       description: 'Caneta plástica Caribe com corpo leve e design funcional. Ideal para grandes volumes promocionais. Clip integrado e acionamento por clique. Excelente relação custo-benefício.',
@@ -691,7 +691,7 @@ function initProductDetails() {
       ]
     },
     'caneta-elegance': {
-      folder: 'caneta%20elegance',
+      folder: 'caneta elegance',
       colors: ['preta', 'prata'],
       angles: 3,
       description: 'Caneta plástica Elegance com visual sofisticado e detalhes metalizados. Corpo ergonômico para escrita confortável. Ideal para uso institucional e eventos.',
@@ -704,7 +704,7 @@ function initProductDetails() {
       ]
     },
     'caneta-executiva': {
-      folder: 'caneta%20executiva',
+      folder: 'caneta executiva',
       colors: ['preta', 'branca'],
       angles: 3,
       description: 'Caneta plástica Executiva com acabamento premium e presença visual superior. Design clássico com detalhes cromados. Escrita suave e durável.',
@@ -717,7 +717,7 @@ function initProductDetails() {
       ]
     },
     'caneta-comercial': {
-      folder: 'caneta%20comercial',
+      folder: 'caneta comercial',
       colors: ['preta', 'azul', 'vermelha', 'amarela', 'verde', 'cinza'],
       angles: 3,
       description: 'Caneta plástica Comercial versátil e disponível em grande variedade de cores. Corpo leve e econômico, ideal para distribuição em massa. Tinta de alta qualidade com escrita suave.',
@@ -735,9 +735,9 @@ function initProductDetails() {
       ]
     },
     'caneta-touch': {
-      folder: 'caneta%20comercial',
+      folder: 'caneta touch e suporte',
       colors: ['preta', 'branca'],
-      angles: 3,
+      angles: 4,
       description: 'Caneta plástica Touch com ponteira touch screen e apoio para celular integrado. Multifuncional e moderna, perfeita para o público conectado. Ideal para brindes tech.',
       material: 'Plástico ABS',
       packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
@@ -783,7 +783,7 @@ function initProductDetails() {
     
     for (let i = 1; i <= gallery.angles; i++) {
       images.push({
-        src: `public/assets/images/${gallery.folder}/imagens/0${i}_${color}.avif`,
+        src: `public/assets/images/${encodeURIComponent(gallery.folder)}/imagens/0${i}_${color}.avif`,
         alt: `Ângulo ${i} - ${color}`
       });
     }
