@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         zapGreen: "#00d355",
-        zapOrange: "#F99D1C",
+        zapOrange: "#1F5E4B",
         zapBlue: "#00AEEF"
       },
       fontFamily: {

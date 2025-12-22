@@ -9,9 +9,9 @@
   <!-- Gift boxes -->
   <g transform="translate(420,160)">
     <rect x="0" y="80" width="280" height="160" rx="18" fill="#fff" stroke="#e5e7eb"/>
-    <rect x="110" y="0" width="60" height="80" rx="8" fill="#F99D1C"/>
-    <rect x="132" y="80" width="16" height="160" fill="#F99D1C"/>
-    <rect x="0" y="140" width="280" height="10" fill="#F99D1C" opacity=".3"/>
+    <rect x="110" y="0" width="60" height="80" rx="8" fill="#1F5E4B"/>
+    <rect x="132" y="80" width="16" height="160" fill="#1F5E4B"/>
+    <rect x="0" y="140" width="280" height="10" fill="#1F5E4B" opacity=".3"/>
   </g>
   <g transform="translate(780,120)">
     <rect x="0" y="120" width="300" height="180" rx="18" fill="#fff" stroke="#e5e7eb"/>

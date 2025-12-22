@@ -17,10 +17,10 @@
   <!-- Confetti -->
   <g opacity=".7">
     <circle cx="80" cy="120" r="6" fill="#00d355"/>
-    <circle cx="180" cy="90" r="4" fill="#F99D1C"/>
+    <circle cx="180" cy="90" r="4" fill="#1F5E4B"/>
     <circle cx="260" cy="160" r="5" fill="#00AEEF"/>
     <circle cx="1120" cy="120" r="6" fill="#00d355"/>
-    <circle cx="1040" cy="90" r="4" fill="#F99D1C"/>
+    <circle cx="1040" cy="90" r="4" fill="#1F5E4B"/>
     <circle cx="940" cy="160" r="5" fill="#00AEEF"/>
   </g>
   <!-- Stage card -->
@@ -40,8 +40,8 @@
       </g>
       <g transform="translate(220,0)">
         <rect x="0" y="0" width="180" height="140" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
-        <circle cx="90" cy="70" r="42" fill="none" stroke="#F99D1C" stroke-width="6"/>
-        <rect x="60" y="40" width="60" height="60" rx="12" fill="none" stroke="#F99D1C" stroke-width="3"/>
+        <circle cx="90" cy="70" r="42" fill="none" stroke="#1F5E4B" stroke-width="6"/>
+        <rect x="60" y="40" width="60" height="60" rx="12" fill="none" stroke="#1F5E4B" stroke-width="3"/>
       </g>
       <g transform="translate(440,0)">
         <rect x="0" y="0" width="180" height="140" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>

@@ -554,6 +554,86 @@ function initSelectionCounter() {
 function initProductDetails() {
   // Product image folders mapping
   const productGalleries = {
+    'adesivo-vinil': {
+      folder: 'PDV Automático',
+      colors: ['pdv-automatico'],
+      angles: 6,
+      description: 'Adesivo vinil para personalização de superfícies lisas, recorte eletrônico, impressão digital, acabamento fosco ou brilho.',
+      material: 'Vinil adesivo',
+      packaging: 'Rolos ou recortes sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'adesivo-resinado': {
+      folder: 'PDV Polionda',
+      colors: ['pdv-polionda'],
+      angles: 4,
+      description: 'Adesivo resinado com efeito 3D, alta durabilidade, ideal para logomarcas, brindes e identificação visual.',
+      material: 'Vinil + resina PU',
+      packaging: 'Recortes individuais',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'placa-acm': {
+      folder: 'Frame Backlight',
+      colors: ['frame-backlight'],
+      angles: 8,
+      description: 'Placa de alumínio composto (ACM) para fachadas, sinalização e decoração. Acabamento premium.',
+      material: 'Alumínio composto',
+      packaging: 'Sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'placa-ps': {
+      folder: 'PDV PU',
+      colors: ['pdv-pu'],
+      angles: 5,
+      description: 'Placa em poliestireno (PS) para sinalização interna, leveza e ótimo custo-benefício.',
+      material: 'Poliestireno',
+      packaging: 'Sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'fachada-letra-caixa': {
+      folder: 'Pop Up Automático',
+      colors: ['pop-up-automatico'],
+      angles: 7,
+      description: 'Fachada com letra caixa em relevo para fachadas, recepções e ambientes internos. Diversos materiais e acabamentos.',
+      material: 'PVC, acrílico, aço ou ACM',
+      packaging: 'Instalação sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'fachada-lona': {
+      folder: 'Roll Up Banner',
+      colors: ['roll-up'],
+      angles: 5,
+      description: 'Fachada em lona econômica e resistente, impressão digital de alta qualidade, instalação rápida.',
+      material: 'Lona vinílica',
+      packaging: 'Sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'painel-backlight': {
+      folder: 'Frame Backlight',
+      colors: ['frame-backlight'],
+      angles: 8,
+      description: 'Painel backlight iluminado para comunicação visual de alto impacto, ideal para vitrines e fachadas.',
+      material: 'Estrutura metálica e lona backlight',
+      packaging: 'Sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'banners': {
+      folder: 'X Banner',
+      colors: ['xbanner'],
+      angles: 5,
+      description: 'Banners promocionais, faixas para eventos, impressão resistente para uso interno e externo.',
+      material: 'Lona ou tecido',
+      packaging: 'Sob medida',
+      minQuantity: 1,
+      colorCodes: []
+    },
     'copo-termico-473': {
       folder: 'copo térmico',
       colors: ['preto', 'azul', 'branco', 'rosa'],
@@ -797,17 +877,19 @@ function initProductDetails() {
     currentImageIndex = index;
     const mainImg = document.getElementById('mainProductImage');
     const thumbnails = document.querySelectorAll('.gallery-thumb');
-    
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
     if (mainImg && currentGallery[index]) {
       mainImg.src = currentGallery[index].src;
       mainImg.alt = currentGallery[index].alt;
     }
-    
     thumbnails.forEach((thumb, i) => {
       thumb.classList.toggle('ring-2', i === index);
       thumb.classList.toggle('ring-zapGreen', i === index);
       thumb.classList.toggle('opacity-60', i !== index);
     });
+    if (prevBtn) prevBtn.classList.toggle('hidden', index === 0);
+    if (nextBtn) nextBtn.classList.toggle('hidden', index === currentGallery.length - 1);
   }
 
   function openModal(productId) {
@@ -853,8 +935,14 @@ function initProductDetails() {
     content.innerHTML = `
       <div class="grid md:grid-cols-2 gap-0">
         <div class="bg-lightGray p-6 md:p-8">
-          <div class="aspect-square w-full bg-white rounded-xl overflow-hidden mb-4 shadow-sm">
+          <div class="relative aspect-square w-full bg-white rounded-xl overflow-hidden mb-4 shadow-sm flex items-center justify-center">
+            <button type="button" id="galleryPrevBtn" aria-label="Imagem anterior" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-zapGreen/80 hover:text-white text-zapGreen rounded-full w-9 h-9 flex items-center justify-center shadow transition-all ${currentGallery.length > 1 ? '' : 'hidden'}">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
             <img id="mainProductImage" src="${currentGallery[0]?.src || ''}" alt="${title}" class="w-full h-full object-contain" />
+            <button type="button" id="galleryNextBtn" aria-label="Próxima imagem" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-zapGreen/80 hover:text-white text-zapGreen rounded-full w-9 h-9 flex items-center justify-center shadow transition-all ${currentGallery.length > 1 ? '' : 'hidden'}">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
             ${thumbnailsHtml}
@@ -862,26 +950,21 @@ function initProductDetails() {
         </div>
         <div class="p-6 md:p-8 flex flex-col">
           <div class="mb-4">
-            <span class="badge-min">${badge}</span>
           </div>
           <h3 class="text-2xl font-bold text-zapGray mb-4">${title}</h3>
-          
           <div class="mb-4">
             <p class="text-xs text-zapGray/60 mb-2">Cores disponíveis:</p>
             <div class="flex flex-wrap gap-2">
               ${colorButtons}
             </div>
           </div>
-
           <div class="mb-4 bg-gray-50 rounded-lg p-3">
             <p class="text-xs font-semibold text-zapGray mb-2">Códigos do produto:</p>
             <div class="space-y-1">
               ${colorCodesHtml || '<p class="text-xs text-zapGray/50">Códigos disponíveis sob consulta.</p>'}
             </div>
           </div>
-
           <p class="text-sm font-semibold text-zapGreen mb-4">Quantidade mínima: ${gallery.minQuantity || 50} unidades</p>
-          
           <div class="space-y-3 mb-6 flex-1">
             <div class="flex items-start gap-2">
               <span class="text-zapGreen mt-0.5">✓</span>
@@ -893,7 +976,6 @@ function initProductDetails() {
             </div>
             <p class="text-zapGray/90 leading-relaxed text-sm mt-4">${gallery.description}</p>
           </div>
-          
           <div class="mt-auto pt-4 border-t border-gray-100">
             <a href="#contato" class="btn-primary w-full" onclick="document.getElementById('productDetailModal').classList.add('hidden'); document.getElementById('productDetailModal').classList.remove('flex'); document.body.classList.remove('no-scroll');">
               Solicitar Orçamento
@@ -911,50 +993,27 @@ function initProductDetails() {
         updateMainImage(parseInt(thumb.dataset.index));
       });
     });
-
-    // Add event listeners for color buttons
-    document.querySelectorAll('.color-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    // Add event listeners for navigation arrows
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const color = btn.dataset.color;
-        const prodId = btn.dataset.product;
-        
-        // Update button states
-        document.querySelectorAll('.color-btn').forEach(b => {
-          b.classList.remove('bg-zapGreen', 'text-white', 'border-zapGreen');
-          b.classList.add('border-gray-300', 'text-zapGray');
-        });
-        btn.classList.add('bg-zapGreen', 'text-white', 'border-zapGreen');
-        btn.classList.remove('border-gray-300', 'text-zapGray');
-        
-        // Rebuild gallery with new color
-        currentGallery = buildGallery(prodId, color);
-        currentImageIndex = 0;
-        
-        // Update thumbnails
-        const thumbsContainer = document.querySelector('.flex.gap-2.overflow-x-auto');
-        if (thumbsContainer) {
-          thumbsContainer.innerHTML = currentGallery.map((img, i) => `
-            <button type="button" class="gallery-thumb w-16 h-16 rounded-lg overflow-hidden bg-lightGray flex-shrink-0 transition-all ${i === 0 ? 'ring-2 ring-zapGreen' : 'opacity-60 hover:opacity-100'}" data-index="${i}">
-              <img src="${img.src}" alt="${img.alt}" class="w-full h-full object-contain" />
-            </button>
-          `).join('');
-          
-          // Re-attach thumb listeners
-          document.querySelectorAll('.gallery-thumb').forEach(thumb => {
-            thumb.addEventListener('click', (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              updateMainImage(parseInt(thumb.dataset.index));
-            });
-          });
+        if (currentImageIndex > 0) {
+          updateMainImage(currentImageIndex - 1);
         }
-        
-        // Update main image
-        updateMainImage(0);
       });
-    });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (currentImageIndex < currentGallery.length - 1) {
+          updateMainImage(currentImageIndex + 1);
+        }
+      });
+    }
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');

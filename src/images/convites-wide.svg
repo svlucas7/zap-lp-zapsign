@@ -11,7 +11,7 @@
     <rect x="0" y="0" width="520" height="360" rx="24" fill="#fff" stroke="#e5e7eb"/>
     <rect x="0" y="0" width="520" height="90" rx="24" fill="#00d355"/>
     <rect x="48" y="140" width="424" height="12" rx="6" fill="#00AEEF"/>
-    <rect x="48" y="176" width="360" height="12" rx="6" fill="#F99D1C"/>
+    <rect x="48" y="176" width="360" height="12" rx="6" fill="#1F5E4B"/>
     <rect x="48" y="212" width="300" height="12" rx="6" fill="#7C3AED"/>
   </g>
   <g transform="translate(900,140)">
