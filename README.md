@@ -1,9 +1,9 @@
-﻿[![Demo](https://img.shields.io/badge/demo-online-success?logo=netlify)](http://zapport.netlify.app/)
+﻿[![Demo](https://img.shields.io/badge/demo-online-success?logo=netlify)](http://zapsign.netlify.app/)
 ![Preview](docs/preview.avif)
 
-# ZapPort — Landing page de catálogo de brindes
+# ZapSign — Landing page de catálogo de comunicação visual
 
-Este repositório contém a landing page utilizada pela ZapPort para apresentar produtos promocionais (canetas, copos térmicos, squeezes etc.), gerar orçamentos rápidos e facilitar contato comercial via WhatsApp.
+Este repositório contém a landing page utilizada pela ZapSign para apresentar produtos promocionais e soluções em comunicação visual, gerar orçamentos rápidos e facilitar contato comercial via WhatsApp.
 
 ## Objetivos
 

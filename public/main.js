@@ -169,13 +169,14 @@ if (form) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     e.stopPropagation();
+    e.stopImmediatePropagation();
     const submitButton = form.querySelector('button[type="submit"]');
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.innerHTML = '<span class="inline-flex items-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Enviando...</span>';
       showToast('Enviando seu pedido...');
 
-      // Monta mensagem para WhatsApp com os campos preenchidos (direcionar para número ZapPort)
+      // Monta mensagem para WhatsApp com os campos preenchidos (direcionar para número ZapSign)
       const payload = buildWhatsAppMessage();
       if (payload) {
         const waLink = `https://wa.me/553125666504?text=${payload}`;
@@ -188,6 +189,8 @@ if (form) {
         submitButton.innerHTML = 'Enviar Solicitação de Orçamento';
       }, 5000);
     }
+
+    return false;
   });
 }
 
@@ -374,6 +377,17 @@ function buildWhatsAppMessage() {
   const telefone = document.getElementById('telefone')?.value?.trim();
   const quantidade = document.getElementById('quantidade')?.value?.trim();
   const mensagem = document.getElementById('mensagem')?.value?.trim();
+  // Mapear os produtos do catálogo para buscar o código correto
+  let productGalleries = window.productGalleries || {};
+  // Se ainda não estiver disponível, tente inicializar a função que popula o mapeamento
+  if (!Object.keys(productGalleries).length && typeof initProductDetails === 'function') {
+    try {
+      initProductDetails();
+    } catch (err) {
+      console.debug('buildWhatsAppMessage: initProductDetails failed', err);
+    }
+    productGalleries = window.productGalleries || {};
+  }
   const produtos = Array.from(document.querySelectorAll('[data-product-row]'))
     .map(row => {
       const checkbox = row.querySelector('input[type="checkbox"]');
@@ -382,13 +396,14 @@ function buildWhatsAppMessage() {
       const name = checkbox.value || checkbox.textContent || '';
       const productId = row.dataset.productId;
       if (!name) return null;
-      
-      // Incluir códigos do produto na mensagem
-      let codesStr = '';
-      if (productId && PRODUCT_CODES[productId]) {
-        codesStr = ` (Cód: ${PRODUCT_CODES[productId].join('/')})`;
+      let code = '';
+      // Buscar código do produto no mapeamento atualizado
+      if (productGalleries && productGalleries[productId] && productGalleries[productId].productCode) {
+        code = productGalleries[productId].productCode;
+      } else if (PRODUCT_CODES[productId]) {
+        code = PRODUCT_CODES[productId].join('/');
       }
-      
+      let codesStr = code ? ` (Cód: ${code})` : '';
       return qty ? `• ${name}${codesStr} — ${qty} un` : `• ${name}${codesStr}`;
     })
     .filter(Boolean);
@@ -554,6 +569,116 @@ function initSelectionCounter() {
 function initProductDetails() {
   // Product image folders mapping
   const productGalleries = {
+    'display-backlight-a3': {
+      folder: 'Display Backlight A3',
+      colors: ['display_A3'],
+      angles: 3,
+      productCode: '40250002',
+      size: 'A3',
+      minNote: 'ou múltiplos de 5',
+      description: 'Display iluminado A3, painel backlight para comunicação visual de alta visibilidade.',
+      material: 'Estrutura metálica e lona backlight',
+      packaging: 'Embala em caixa individual, oferecendo segurança no manuseio, transporte e armazenamento do produto.',
+      minQuantity: 5,
+      colorCodes: []
+    },
+    'display-backlight-a4': {
+      folder: 'Display Backlight A4',
+      colors: ['display_A4'],
+      angles: 3,
+      productCode: '40250001',
+      size: 'A4',
+      minNote: 'ou múltiplos de 5',
+      description: 'Display iluminado A4, ideal para áreas compactas e balcões de atendimento.',
+      material: 'Estrutura metálica e lona backlight',
+      packaging: 'Embala em caixa individual, oferecendo segurança no manuseio, transporte e armazenamento do produto.',
+      minQuantity: 5,
+      colorCodes: []
+    },
+    'frame-backlight': {
+      folder: 'Frame Backlight',
+      colors: ['frame-backlight'],
+      angles: 3,
+      productCode: '40240014',
+      size: '100x200 cm',
+      description: 'Frame backlight para exposição em vitrines e pontos de venda.',
+      material: 'Perfil de alumínio e lona backlight',
+      packaging: 'Acompanha bolsa própria que protege a estrutura e facilita o transporte.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'pdv-automatico': {
+      folder: 'PDV Automático',
+      colors: ['pdv-automatico'],
+      angles: 3,
+      productCode: '40240013',
+      size: '2073x1000 mm',
+      description: 'Balcão PDV automático para exposição e vendas em pontos estratégicos.',
+      material: 'Polionda e revestimentos',
+      packaging: 'Acompanha bolsa própria para proteção e transporte; enviado em caixa para o recebimento do cliente.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'pdv-polionda': {
+      folder: 'PDV Polionda',
+      colors: ['pdv-polionda'],
+      angles: 3,
+      productCode: '40220024',
+      size: '1850x900 mm',
+      description: 'Balcão leve em polionda, fácil montagem e transporte.',
+      material: 'Polionda',
+      packaging: 'Embala em caixa individual com saco protetor para transporte e armazenamento.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'pdv-pu': {
+      folder: 'PDV PU',
+      colors: ['pdv-pu'],
+      angles: 3,
+      productCode: '40220025',
+      size: '1830x770 mm',
+      description: 'Balcão PDV em PU com acabamento elegante para vitrines e eventos.',
+      material: 'PU estruturado',
+      packaging: 'Embala em caixa individual com saco protetor.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'pop-up-automatico': {
+      folder: 'Pop Up Automático',
+      colors: ['pop-up-automatico'],
+      angles: 3,
+      productCode: '40240012',
+      size: '3x3 m',
+      description: 'Estrutura pop up automática para montagem rápida em eventos e feiras.',
+      material: 'Estrutura metálica e tecido impresso',
+      packaging: 'Embala em caixa individual com saco protetor; acompanha bolsa de transporte.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'roll-up-banner': {
+      folder: 'Roll Up Banner',
+      colors: ['roll-up'],
+      angles: 3,
+      productCode: '40240011',
+      size: '85x200 cm',
+      description: 'Banner retrátil roll-up, fácil transporte e instalação rápida.',
+      material: 'Lona vinílica e estrutura em alumínio',
+      packaging: 'Embala em caixa individual com saco protetor; cada unidade acompanha bolsa.',
+      minQuantity: 1,
+      colorCodes: []
+    },
+    'x-banner': {
+      folder: 'X Banner',
+      colors: ['xbanner'],
+      angles: 3,
+      productCode: '40220025',
+      size: '60x160 cm',
+      description: 'X Banner para comunicação versátil em pontos de venda e eventos.',
+      material: 'Lona e estrutura em fibra/metal',
+      packaging: 'Embala em caixa individual com saco protetor; acompanha bolsa para transporte.',
+      minQuantity: 1,
+      colorCodes: []
+    },
     'adesivo-vinil': {
       folder: 'PDV Automático',
       colors: ['pdv-automatico'],
@@ -568,7 +693,7 @@ function initProductDetails() {
       folder: 'PDV Polionda',
       colors: ['pdv-polionda'],
       angles: 4,
-      description: 'Adesivo resinado com efeito 3D, alta durabilidade, ideal para logomarcas, brindes e identificação visual.',
+      description: 'Adesivo resinado com efeito 3D, alta durabilidade, ideal para logomarcas, materiais promocionais e identificação visual.',
       material: 'Vinil + resina PU',
       packaging: 'Recortes individuais',
       minQuantity: 1,
@@ -738,7 +863,7 @@ function initProductDetails() {
       folder: 'caneta metal lyme',
       colors: ['branca', 'silver'],
       angles: 3,
-      description: 'Caneta metálica Lyme com visual limpo e executivo. Acabamento metalizado de alta qualidade com detalhes cromados. Ideal para brindes corporativos de alto padrão.',
+      description: 'Caneta metálica Lyme com visual limpo e executivo. Acabamento metalizado de alta qualidade com detalhes cromados. Ideal para materiais promocionais corporativos de alto padrão.',
       material: 'Alumínio',
       packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
       minQuantity: 50,
@@ -820,7 +945,7 @@ function initProductDetails() {
       folder: 'caneta touch e suporte',
       colors: ['preta', 'branca'],
       angles: 4,
-      description: 'Caneta plástica Touch com ponteira touch screen e apoio para celular integrado. Multifuncional e moderna, perfeita para o público conectado. Ideal para brindes tech.',
+      description: 'Caneta plástica Touch com ponteira touch screen e apoio para celular integrado. Multifuncional e moderna, perfeita para o público conectado. Ideal para materiais promocionais tech.',
       material: 'Plástico ABS',
       packaging: 'Individual em plástico anti-eletrostático com proteção de tinta',
       minQuantity: 50,
@@ -830,6 +955,8 @@ function initProductDetails() {
       ]
     }
   };
+  // exportar para `window` para que outras funções (ex: buildWhatsAppMessage) leiam os códigos
+  window.productGalleries = productGalleries;
 
   // Create modal
   let modal = document.getElementById('productDetailModal');
@@ -918,6 +1045,9 @@ function initProductDetails() {
 
     // Gerar HTML dos códigos dos produtos (usar fallback para PRODUCT_CODES se necessário)
     let codes = Array.isArray(gallery.colorCodes) ? gallery.colorCodes.slice() : [];
+    if ((!codes || !codes.length) && gallery.productCode) {
+      codes = [{ label: 'Código do produto', code: gallery.productCode }];
+    }
     if ((!codes || !codes.length) && PRODUCT_CODES[productId]) {
       // Construir pares label/code usando cores conhecidas e o mapa global
       const pc = PRODUCT_CODES[productId] || [];
@@ -949,6 +1079,7 @@ function initProductDetails() {
           </div>
         </div>
         <div class="p-6 md:p-8 flex flex-col">
+          <div class="mb-2 text-sm text-zapGray/70">Tamanho: ${gallery.size || '—'}</div>
           <div class="mb-4">
           </div>
           <h3 class="text-2xl font-bold text-zapGray mb-4">${title}</h3>
@@ -964,7 +1095,7 @@ function initProductDetails() {
               ${colorCodesHtml || '<p class="text-xs text-zapGray/50">Códigos disponíveis sob consulta.</p>'}
             </div>
           </div>
-          <p class="text-sm font-semibold text-zapGreen mb-4">Quantidade mínima: ${gallery.minQuantity || 50} unidades</p>
+          <p class="text-sm font-semibold text-zapGreen mb-4">Quantidade mínima: ${gallery.minQuantity || 50} unidades${gallery.minNote ? ' ' + gallery.minNote : ''}</p>
           <div class="space-y-3 mb-6 flex-1">
             <div class="flex items-start gap-2">
               <span class="text-zapGreen mt-0.5">✓</span>
