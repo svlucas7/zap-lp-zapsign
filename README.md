@@ -1,65 +1,67 @@
 ﻿[![Demo](https://img.shields.io/badge/demo-online-success?logo=netlify)](http://zapsign.netlify.app/)
-![Preview](docs/preview.avif)
-
+![Preview](public/assets/images/NAVIO.avif)
 # ZapSign — Landing page de catálogo de comunicação visual
 
-Este repositório contém a landing page utilizada pela ZapSign para apresentar produtos promocionais e soluções em comunicação visual, gerar orçamentos rápidos e facilitar contato comercial via WhatsApp.
+Este repositório contém a landing page estática do portal ZapSign, projetada para apresentar soluções de comunicação visual (banners, displays, totens, backdrops e materiais de ponto de venda), facilitar orçamentos rápidos e contato comercial via WhatsApp.
 
-## Objetivos
+## Objetivo do repositório
 
-- Catálogo leve e responsivo focado em conversão e geração de leads.
-- Galerias por produto com imagens por ângulo e seleção por cor.
-- Formulário de orçamento com validações de quantidade mínima e mensagem pré-preenchida para WhatsApp.
+- Servir como site promocional responsivo e catálogo de produtos para revenda B2B.
+- Oferecer galerias por produto com imagens por ângulo e seleção por cor.
+- Gerar mensagens de orçamento pré-preenchidas para WhatsApp a partir do formulário de contato.
 
 ## Tecnologias
 
-- HTML semântico + Tailwind CSS
-- JavaScript (vanilla) em `public/main.js`
+- HTML semântico + Tailwind CSS (via CDN e configuração local para builds)
+- JavaScript (vanilla) em `public/main.js` para galeria, modal e geração de mensagem
 - Imagens otimizadas em AVIF em `public/assets/images`
 
-## Estrutura
+## Estrutura do projeto
 
-- `index.html`  página principal
-- `public/`  assets públicos (scripts, imagens, estilos gerados)
-- `src/input.css`  entrada do Tailwind
-- `public/main.js`  interação: modais, galeria e geração de mensagem
-- `docs/preview.avif`  imagem de preview usada no GitHub
+- `index.html` — página principal e catálogo
+- `public/` — assets públicos (scripts, imagens, estilos gerados)
+	- `public/main.js` — lógica de interatividade (galerias, modal, compare e geração de WhatsApp)
+- `src/input.css` — entrada do Tailwind (quando usado localmente)
+- `docs/preview.avif` — imagem de preview para o GitHub
 
-## Rodando localmente
+## Desenvolvimento local
 
-1. Instale dependências e rode o watch do Tailwind (opcional):
+Instalação (opcional, somente se for usar o build do Tailwind):
 
 ```bash
 npm install
+```
+
+Executar em modo de desenvolvimento (gera CSS com Tailwind se configurado):
+
+```bash
 npm run dev
 ```
 
-2. Visualização rápida (sem Tailwind watch):
+Visualização rápida (sem dependências):
 
 ```bash
 python -m http.server 8000
 # abra http://localhost:8000
 ```
 
-3. Build de produção dos estilos:
+Gerar build de produção dos estilos (quando aplicável):
 
 ```bash
 npm run build
 ```
 
-## Atualizar preview
-
-Para gerar/atualizar o preview do repositório copie uma imagem representativa para `docs/preview.avif`. Exemplo (já executado neste commit): copiar `public/assets/images/zapport_1.avif`  `docs/preview.avif`.
-
 ## Deploy
 
-- GitHub Pages ou Netlify (configurar build: `npm run build` se usar Tailwind)
+Pode ser hospedado em Netlify, Vercel ou GitHub Pages. Se usar processamento local do Tailwind, execute `npm run build` antes do deploy.
 
-## Observações
+## Observações importantes
 
-- Alguns arquivos PSD e `Thumbs.db` foram incluídos por comodidade; recomendo limpar o histórico e adicionar entradas adequadas ao `.gitignore` se desejar manter o repositório enxuto.
-- Atualize `public/main.js` ao adicionar novas pastas de imagens para que as galerias funcionem corretamente.
+- Ao adicionar novas pastas de imagens, atualize `public/main.js` para incluir os metadados do produto e garantir que a galeria exiba corretamente as imagens e códigos de produto.
+- Algumas imagens ainda mantêm nomes legados (ex.: `zapport_1.avif`); renomeie-as com cuidado e atualize referências se desejar alinhar nomes ao branding ZapSign.
+- Recomenda-se adicionar um `.gitignore` com arquivos temporários e remover binários não essenciais do histórico quando necessário.
 
 ---
 
 Maintainer: Lucas Silva (@svlucas7)
+Repo remoto: https://github.com/svlucas7/zap-lp-zapsign.git
